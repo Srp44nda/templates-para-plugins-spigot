@@ -1,4 +1,4 @@
-package <package de comandos>;
+package me.srp44nda.lobby_44.commands;
 
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -6,14 +6,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class <class> implements CommandExecutor {
+public class Gamemode implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
 
         if (cmd.getName().equalsIgnoreCase("gm")) {
             if (p.hasPermission("gamemode.lobby44")) {
-                if (args.length == 0) {
+                if (args[0] == null) {
+                    p.sendMessage("Defina o seu mode de jogo [/gm 0,1,2,3]");
                 }
                 if (args[0].equalsIgnoreCase("0")) {
                     p.setGameMode(GameMode.SURVIVAL);
@@ -41,12 +42,11 @@ public class <class> implements CommandExecutor {
 
 
 
-//Lembre-se de registrar o comando na <plugin.yml> e <Classe principal.class>
+//Lembre-se de registrar o comando na <plugin.yml> e <Classe principal.class>    
+
 
 
 
 public void commands() {
         getCommand("gm").setExecutor(new Gamemode());
     }
-
-
